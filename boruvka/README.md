@@ -1,1 +1,1 @@
-#Codebase for parallelized Boruvka's Algorithm
+# Codebase for parallelized Boruvka's Algorithm

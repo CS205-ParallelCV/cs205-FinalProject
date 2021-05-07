@@ -1,1 +1,1 @@
-#Codebase for parallelized Otsu's Method
+# Codebase for parallelized Otsu's Method
