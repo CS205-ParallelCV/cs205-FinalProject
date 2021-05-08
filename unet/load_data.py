@@ -51,4 +51,4 @@ def load_train_test(train_path, mask_path, test_path, width=512, height=512, cha
 
 
 
-load_train_test("../cell_imgs/", "../mask_imgs/", "../test_imgs/")
+# load_train_test("../cell_imgs/", "../mask_imgs/", "../test_imgs/")
