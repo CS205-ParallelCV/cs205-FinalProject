@@ -5,6 +5,9 @@ from keras.layers.convolutional import Conv2D, Conv2DTranspose
 from keras.layers.pooling import MaxPooling2D
 from keras.layers.merge import concatenate
 
+#import tensorflow as tf
+
+#from evals import my_iou_metric
 from evals import mean_iou
 
 
@@ -63,7 +66,8 @@ def build_unet(height, width, channels) -> Model:
   outputs = Conv2D(1, (1, 1), activation='sigmoid') (c9)
 
   model = Model(inputs=[inputs], outputs=[outputs])
-  model.compile(optimizer='adam', loss='binary_crossentropy', metrics=[mean_iou])
+  model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+                #metrics=[mean_iou])
   model.summary()
 
   return model
