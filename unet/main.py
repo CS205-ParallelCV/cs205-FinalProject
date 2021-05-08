@@ -28,7 +28,7 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='Training Script')
   parser.add_argument('--root_dir', type=str, required=True)
   parser.add_argument('--epochs', default=20, type=int, required=False)
-  parser.add_argument('--model_dir', default='unet_model.h5', type=str, required=False)
+  parser.add_argument('--weights', default='unet_model.h5', type=str, required=False)
   args = vars(parser.parse_args())
 
   ROOT_DIR = args['root_dir']
