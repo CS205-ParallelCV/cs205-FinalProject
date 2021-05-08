@@ -27,6 +27,7 @@ To run the code, use the command ```python3 main.py --root_dir <path> --epochs <
 - root_dir: parent directory that contains cell_imgs, mask_imgs, test_imgs  
 - epochs: number of training epochs  
 - weights: name of the model to be saved, must end with '.h5'!  
+
 For example, 
 ```
 python3 main.py --root_dir /home/user/data --epochs 20 --weights model.h5
