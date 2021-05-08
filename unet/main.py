@@ -14,6 +14,10 @@ from preprocessing import create_image_mask_generator
 from unet import build_unet
 from evals import mean_iou, prob_to_rles
 
+
+import googlecloudprofiler
+
+
 # Set some parameters
 BATCH_SIZE = 32  # the higher the better
 IMG_WIDTH = 512  # for faster computing on kaggle
@@ -25,6 +29,23 @@ seed = 42
 
 
 if __name__ == "__main__":
+  # Profiler initialization. It starts a daemon thread which continuously
+  # collects and uploads profiles. Best done as early as possible.
+  try:
+    googlecloudprofiler.start(
+            service='hello-profiler',
+            service_version='1.0.1',
+            # verbose is the logging level. 0-error, 1-warning, 2-info,
+            # 3-debug. It defaults to 0 (error) if not set.
+            verbose=3,
+            # project_id must be set if not running on GCP.
+            # project_id='my-project-id',
+        )
+  except (ValueError, NotImplementedError) as exc:
+    print(exc)  # Handle errors here
+
+
+
   parser = argparse.ArgumentParser(description='Training Script')
   parser.add_argument('--root_dir', type=str, required=True)
   parser.add_argument('--epochs', default=20, type=int, required=False)

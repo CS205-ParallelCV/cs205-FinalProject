@@ -7,3 +7,15 @@ Then, use the command "python3 main.py --root_dir xxx --epochs xx --weights xxx"
 - epochs: number of training epochs  
 - weights: name of the model to be saved, must end with '.h5'!  
 
+
+setup commands:
+
+python3 --version
+sudo apt update
+sudo apt-get install software-properties-common
+sudo apt install python3.6
+python3 --version
+sudo apt-get install python3-pip
+python3 -m pip install --upgrade pip setuptools
+pip install -r requirements.txt
+pip install google-cloud-profiler
