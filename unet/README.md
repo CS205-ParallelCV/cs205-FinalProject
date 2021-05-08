@@ -22,7 +22,7 @@ sudo apt-get install software-properties-common
 sudo apt-get install python3-pip
 python3 -m pip install --upgrade pip setuptools
 pip install -r requirements.txt
-pip install google-cloud-profiler
+pip install google-cloud-profiler --ignore-installed
 ```
 
 To run the code, use the command ```python3 main.py --root_dir <path> --epochs <num> --weights <str>```
