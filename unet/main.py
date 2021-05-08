@@ -28,6 +28,7 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='Training Script')
   parser.add_argument('--root_dir', type=str, required=True)
   parser.add_argument('--epochs', default=20, type=int, required=False)
+  parser.add_argument('--model_dir', default='unet_model.h5', type=str, required=False)
   args = vars(parser.parse_args())
 
   ROOT_DIR = args['root_dir']
@@ -36,6 +37,7 @@ if __name__ == "__main__":
   NEW_TRAIN_PATH = ROOT_DIR + '/train/'
   NEW_TEST_PATH = ROOT_DIR + '/test/'
   EPOCHS = args['epochs']
+  MODEL_DIR = args['model_dir']
 
   # Load train test data
   X_train, Y_train, X_test, train_ids, test_ids, sizes_test = load_train_test(TRAIN_PATH, TEST_PATH,
@@ -50,13 +52,13 @@ if __name__ == "__main__":
 
   # Fit model
   earlystopper = EarlyStopping(patience=100, verbose=1)
-  checkpointer = ModelCheckpoint('unet_model.h5', verbose=1, save_best_only=True)
+  checkpointer = ModelCheckpoint(MODEL_DIR, verbose=1, save_best_only=True)
   results = model.fit_generator(train_generator, validation_data=val_generator, validation_steps=10,
                                 steps_per_epoch=200,
                                 epochs=EPOCHS, callbacks=[earlystopper, checkpointer])
 
   # Predict on train, val and test
-  model = load_model('unet_model.h5', custom_objects={'mean_iou': mean_iou})
+  model = load_model(MODEL_DIR, custom_objects={'mean_iou': mean_iou})
   preds_train = model.predict(X_train[:train_size], verbose=1)
   preds_val = model.predict(X_train[train_size:], verbose=1)
   preds_test = model.predict(X_test, verbose=1)
