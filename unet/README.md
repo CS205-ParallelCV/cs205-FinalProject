@@ -3,12 +3,11 @@ This is a repo for CS 205 final project.
   
 
 
-
 download data: (need ```gcloud init``` with the account that can access the bucket)
 ```
-gsutil cp -R gs://cs205_final_project/cell_imgs data
-gsutil cp -R gs://cs205_final_project/mask_imgs data
-gsutil cp -R gs://cs205_final_project/test_imgs data
+gsutil cp -R gs://cs205_final_project/cell_imgs data/
+gsutil cp -R gs://cs205_final_project/mask_imgs data/
+gsutil cp -R gs://cs205_final_project/test_imgs data/
 ```
 setup environment:
 ```
