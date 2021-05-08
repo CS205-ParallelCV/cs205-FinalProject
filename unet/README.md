@@ -13,10 +13,12 @@ gsutil cp -R gs://cs205_final_project/test_imgs data
 setup environment:
 ```
 python3 --version
+```
+If not python 3.6 then use the additional step ```sudo apt install python3.6```.
+Then continue:
+```
 sudo apt update
 sudo apt-get install software-properties-common
-sudo apt install python3.6
-python3 --version
 sudo apt-get install python3-pip
 python3 -m pip install --upgrade pip setuptools
 pip install -r requirements.txt
