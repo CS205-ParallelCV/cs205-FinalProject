@@ -15,9 +15,9 @@ from unet import build_unet
 from evals import mean_iou, prob_to_rles
 
 # Set some parameters
-BATCH_SIZE = 32 # the higher the better
-IMG_WIDTH = 512 # for faster computing on kaggle
-IMG_HEIGHT = 512 # for faster computing on kaggle
+BATCH_SIZE = 32  # the higher the better
+IMG_WIDTH = 512  # for faster computing on kaggle
+IMG_HEIGHT = 512  # for faster computing on kaggle
 IMG_CHANNELS = 3
 
 
@@ -32,15 +32,14 @@ if __name__ == "__main__":
   args = vars(parser.parse_args())
 
   ROOT_DIR = args['root_dir']
-  TRAIN_PATH = ROOT_DIR + '/stage1_train/'
-  TEST_PATH = ROOT_DIR + 'stage1_test/'
-  NEW_TRAIN_PATH = ROOT_DIR + '/train/'
-  NEW_TEST_PATH = ROOT_DIR + '/test/'
+  TRAIN_PATH = ROOT_DIR + '/cell_imgs/'
+  MASK_PATH = ROOT_DIR + '/mask_imgs/'
+  TEST_PATH = ROOT_DIR + '/test_imgs/'
   EPOCHS = args['epochs']
   MODEL_DIR = args['model_dir']
 
   # Load train test data
-  X_train, Y_train, X_test, train_ids, test_ids, sizes_test = load_train_test(TRAIN_PATH, TEST_PATH,
+  X_train, Y_train, X_test, train_ids, test_ids, sizes_test = load_train_test(TRAIN_PATH, MASK_PATH, TEST_PATH,
                                                                               IMG_WIDTH, IMG_HEIGHT, IMG_CHANNELS)
   train_size = int(X_train.shape[0] * 0.9)
 
