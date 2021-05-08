@@ -73,6 +73,7 @@ if __name__ == "__main__":
   # Fit model
   earlystopper = EarlyStopping(patience=100, verbose=1)
   checkpointer = ModelCheckpoint(WEIGHTS, verbose=1, save_best_only=True)
+  # TODO: add callbacks with TensorBoard
   results = model.fit_generator(train_generator, validation_data=val_generator, validation_steps=10,
                                 steps_per_epoch=200,
                                 epochs=EPOCHS, callbacks=[earlystopper, checkpointer])
