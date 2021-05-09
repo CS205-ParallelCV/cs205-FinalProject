@@ -38,7 +38,6 @@ sudo apt-get install software-properties-common
 sudo apt-get install python3-pip
 python3 -m pip install --upgrade pip setuptools
 pip install -r requirements.txt
-pip install google-cloud-profiler --ignore-installed
 ```
    
 ## Code Execution
