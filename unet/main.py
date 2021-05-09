@@ -145,8 +145,8 @@ def main():
   i = 602
   show_images(i, i, X_train, Y_train, preds_train, preds_train_t, savename=RESULTS_DIR + '/train%d_pred.png' % i)
 
-  i = 662
-  show_images(i, i, X_train, Y_train, preds_val, preds_val_t, savename=RESULTS_DIR + '/val%d_pred.png' % i)
+  i = 21
+  show_images(i, i, X_train[train_size:], Y_train[train_size:], preds_val, preds_val_t, savename=RESULTS_DIR + '/val%d_pred.png' % i)
 
   i = 18
   show_images(i, i, X_test, None, preds_test, preds_test_t, savename=RESULTS_DIR + '/test%d_pred.png' % i)
