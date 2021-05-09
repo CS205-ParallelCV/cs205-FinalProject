@@ -34,8 +34,7 @@ seed = 42
 
 def parse_to_argdict():
   parser = argparse.ArgumentParser(description='Training Script')
-  parser.add_argument('--data_dir', type=str, required=True)
-  parser.add_argument('--output_dir', type=str, required=True)
+  parser.add_argument('--root_dir', type=str, required=True)
   parser.add_argument('--model_name', default='unet_model', type=str, required=False)
   parser.add_argument('--epochs', default=20, type=int, required=False)
   args = vars(parser.parse_args())
@@ -89,18 +88,18 @@ def main():
   # Read input args
   args = parse_to_argdict()
 
-  DATA_DIR = args['data_dir']
-  OUTPUT_DIR = args['output_dir']
+  ROOT_DIR = args['root_dir']
   MODEL_NAME = args['model_name']
   EPOCHS = args['epochs']
 
-  TRAIN_PATH = DATA_DIR + '/cell_imgs/'
-  MASK_PATH = DATA_DIR + '/mask_imgs/'
-  TEST_PATH = DATA_DIR + '/test_imgs/'
+  TRAIN_PATH = ROOT_DIR + '/data/cell_imgs/'
+  MASK_PATH = ROOT_DIR + '/data/mask_imgs/'
+  TEST_PATH = ROOT_DIR + '/data/test_imgs/'
 
+  OUTPUT_DIR = ROOT_DIR + '/outs'
   WEIGHTS = OUTPUT_DIR + '/' + MODEL_NAME +'_weights.h5'
   LOG_DIR = OUTPUT_DIR + "/logs"
-  RESULT_DIR = OUTPUT_DIR + '/results'
+  RESULTS_DIR = OUTPUT_DIR + '/results'
 
   # Load train test data
   X_train, Y_train, X_test, train_ids, test_ids, sizes_test = load_train_test(TRAIN_PATH, MASK_PATH, TEST_PATH,
@@ -123,7 +122,7 @@ def main():
                                       callbacks=[tensorboard, earlystopper, checkpointer])
 
   # Plot learning curve
-  plot_learning(model_results, savepath = RESULT_DIR + "/learning_curve.png")
+  plot_learning(model_results, savepath=OUTPUT_DIR + "/learning_curve.png")
 
   # Predict on train, val and test
   model = load_model(WEIGHTS)  # custom_objects={'mean_iou': mean_iou}
@@ -144,13 +143,13 @@ def main():
 
   # Save some example prediction results
   i = 602
-  show_images(i, i, X_train, Y_train, preds_train, preds_train_t, savename=RESULT_DIR + '/train%d_pred.png' % i)
+  show_images(i, i, X_train, Y_train, preds_train, preds_train_t, savename=RESULTS_DIR + '/train%d_pred.png' % i)
 
   i = 662
-  show_images(i, i, X_train, Y_train, preds_val, preds_val_t, savename=RESULT_DIR + '/val%d_pred.png' % i)
+  show_images(i, i, X_train, Y_train, preds_val, preds_val_t, savename=RESULTS_DIR + '/val%d_pred.png' % i)
 
   i = 18
-  show_images(i, i, X_test, None, preds_test, preds_test_t, savename=RESULT_DIR + '/test%d_pred.png' % i)
+  show_images(i, i, X_test, None, preds_test, preds_test_t, savename=RESULTS_DIR + '/test%d_pred.png' % i)
 
   return
 
