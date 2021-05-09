@@ -3,6 +3,7 @@ pandas==1.1.5
 matplotlib==3.3.4
 tqdm==4.60.0
 scikit-image==0.17.2
-tensorflow==2.4.1
-keras
-tensorboard-plugin-profile
+tensorflow==2.2.0
+tensorboard==2.2.0
+tensorboard-plugin-profile==2.2.0
+keras==2.4.3
