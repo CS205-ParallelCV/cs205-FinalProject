@@ -35,6 +35,7 @@ pip install -r requirements.txt
 Assume the dataset is saved in Google Cloud Storage bucket ```cs205_final_project```.
 To run the code, first download the data to local machine by the following commands:
 ```
+cd unet (there will be a directory called data inside)
 gsutil -m cp -R gs://cs205_final_project/cell_imgs data/
 gsutil -m cp -R gs://cs205_final_project/mask_imgs data/
 gsutil -m cp -R gs://cs205_final_project/test_imgs data/
