@@ -9,16 +9,6 @@ The set up documentation can be found on our website.
 Then instantiate a VM instance of type ```c2-standard-30 (30 vCPUs, 120 GB memory)``` with Ubuntu 18.04.
 
 
-## Download data: 
-Assume the dataset is saved in Google Cloud Storage bucket ```cs205_final_project```.
-To run the code, first download the data to local machine by the following commands:
-```
-mkdir data
-gsutil -m cp -R gs://cs205_final_project/cell_imgs data/
-gsutil -m cp -R gs://cs205_final_project/mask_imgs data/
-gsutil -m cp -R gs://cs205_final_project/test_imgs data/
-```
-Note: need ```gcloud init``` with the account that can access the bucket
 
 ## Setup Environment:
 Download this project and upload this ```unet``` directory to your VM instance with the following
@@ -39,7 +29,17 @@ sudo apt-get install python3-pip
 python3 -m pip install --upgrade pip setuptools
 pip install -r requirements.txt
 ```
-   
+
+## Download data: 
+Assume the dataset is saved in Google Cloud Storage bucket ```cs205_final_project```.
+To run the code, first download the data to local machine by the following commands:
+```
+gsutil -m cp -R gs://cs205_final_project/cell_imgs data/
+gsutil -m cp -R gs://cs205_final_project/mask_imgs data/
+gsutil -m cp -R gs://cs205_final_project/test_imgs data/
+```
+Note: need ```gcloud init``` with the account that can access the bucket
+
 ## Code Execution
 To run the code, use the command 
 ```
