@@ -14,8 +14,9 @@ Then instantiate a VM instance of type ```c2-standard-30 (30 vCPUs, 120 GB memor
 Download this project and upload this ```unet``` directory to your VM instance with the following
 command:
 ```
-gcloud compute scp --recurse dir/to/unet your-instance:/your/dir
+gcloud compute scp --recurse <dir/to/unet> <your-instance:/your/dir>
 ```
+Or alternatively, do it manually by downloading the directory locally.
 Then check Python version via
 ```
 python3 --version
