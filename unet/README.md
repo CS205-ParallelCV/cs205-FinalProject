@@ -92,7 +92,6 @@ Then, make sure you have the correct version of TensorBoard installed by running
 ```
 pip uninstall tensorboard
 pip install tensorboard==2.2.0
-pip install tensorboard==2.2.0
 pip install -U tensorboard-plugin-profile==2.2.0
 ```
 Then use the following command to launch TensorBoard:
