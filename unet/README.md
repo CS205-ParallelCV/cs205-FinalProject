@@ -96,7 +96,7 @@ pip install -U tensorboard-plugin-profile==2.2.0
 ```
 Then use the following command to launch TensorBoard:
 ```
-tensorboard --logdir dir/to/log  
+tensorboard --logdir=<dir/to/log>  
 
 >> TensorBoard 2.2.0 at http://localhost:6006/ (Press CTRL+C to quit)
 ```
