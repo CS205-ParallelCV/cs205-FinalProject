@@ -1,3 +1,6 @@
+"""
+This script can be used to load a pretrained model to predict on test images.
+"""
 import argparse
 import numpy as np
 import time
@@ -82,3 +85,11 @@ if __name__ == "__main__":
   print("Script total time: %.3f sec" % (time.time() - start))
   print("\nFunction Time Breakdown:\n")
   print(function_times)
+
+  # To profile the code, execute the following in cmd line:
+  # 1. python -m cProfile -o main.profile main.py
+  # 2. python -m pstats main.profile
+  # 3. strip
+  # 4. sort
+  # 5. sort time
+  # 6. stats 10

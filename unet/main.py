@@ -1,3 +1,7 @@
+"""
+This script loads the data from local machine and trains a UNet.
+With specified flags, you may predict on the test data and save the predictions in outs/results/.
+"""
 import argparse
 import time
 
@@ -18,7 +22,7 @@ from unet import build_unet
 
 
 # Set some parameters
-BATCH_SIZE = 1  # the higher the better
+BATCH_SIZE = 1  # You can adjust batch size for faster convergence
 IMG_WIDTH = 512  # for faster computing on kaggle
 IMG_HEIGHT = 512  # for faster computing on kaggle
 IMG_CHANNELS = 3
@@ -130,10 +134,6 @@ def main():
   model_results = model.fit_generator(train_generator, validation_data=val_generator, validation_steps=10,
                                       steps_per_epoch=200, epochs=EPOCHS,
                                       callbacks=[tensorboard, earlystopper, checkpointer])
-  # model_results = model.fit(X_train[:train_size], Y_train[:train_size], BATCH_SIZE,
-  #                           validation_data=(X_train[train_size:], Y_train[train_size:]), validation_steps=10,
-  #                           steps_per_epoch=200, epochs=EPOCHS,
-  #                           callbacks=[tensorboard, earlystopper, checkpointer])
   function_time_outs += "Model training: %.3f sec\n" % (time.time() - start)
 
 
@@ -193,9 +193,7 @@ if __name__ == "__main__":
   print("\nFunction Time Breakdown:\n")
   print(function_times)
 
-  # NOTE: Tesla P4 does not have enough memory. 8GB is not enough, it needs at least ~14GB.
-
-  # In cmdline:
+  # To profile the code, execute the following in cmd line:
   # 1. python -m cProfile -o main.profile main.py
   # 2. python -m pstats main.profile
   # 3. strip

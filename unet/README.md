@@ -116,3 +116,18 @@ breakdown of the time spent in different sections. More detailed information can
 the 'Tools' drop-down list at the left. The following is an example output.
 
 ![](https://github.com/CS205-ParallelCV/cs205-FinalProject/blob/main/imgs/Tensorboard_output.png)
+
+## Execute with GPU
+To use the GPU for the compute engine instance on GCP, first make sure you have enough GPU quota in 
+your account. Then follow the official guide to ![attach](https://cloud.google.com/compute/docs/gpus/add-remove-gpus) 
+and ![install Cuda dependencies](https://www.tensorflow.org/install/gpu).  
+After setup, make sure you ```nvndia-smi``` command works in the terminal.
+
+To use GPU on AWS, we recommend using Deep Learning AMI (Ubuntu 18.04) Version 43.0 as your
+the Amazon Machine Image, since it has most of the machine learning packages installed. 
+
+Then, install tensorflow-gpu by 
+```bash
+pip install tensorflow-gpu
+```
+To execute the code, use the commands described above.
