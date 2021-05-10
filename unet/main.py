@@ -174,10 +174,7 @@ def main():
     # Plot learning curve
     plot_learning(model_results, savepath=OUTPUT_DIR + "/learning_curve.png")
 
-    i = 26
-    show_images(i, i, X_train, Y_train, preds_train, preds_train_t, savename=RESULTS_DIR + '/train%d_pred.png' % i)
-
-    i = 10
+    i = 58
     show_images(i, i, X_train, Y_train, preds_train, preds_train_t, savename=RESULTS_DIR + '/train%d_pred.png' % i)
 
     i = 20

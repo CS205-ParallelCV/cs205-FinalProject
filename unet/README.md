@@ -9,6 +9,7 @@ The set up documentation can be found on our website.
 Then instantiate a VM instance of type ```c2-standard-30 (30 vCPUs, 120 GB memory)``` with Ubuntu 18.04.
 
 
+
 ## Download data: 
 Assume the dataset is saved in Google Cloud Storage bucket ```cs205_final_project```.
 To run the code, first download the data to local machine by the following commands:
@@ -20,12 +21,14 @@ gsutil -m cp -R gs://cs205_final_project/test_imgs data/
 ```
 Note: need ```gcloud init``` with the account that can access the bucket
 
+
 ## Setup Environment:
 Download this project and upload this ```unet``` directory to your VM instance with the following
 command:
 ```
-gcloud compute scp --recurse dir/to/unet your-instance:/your/dir
+gcloud compute scp --recurse <dir/to/unet> <your-instance:/your/dir>
 ```
+Or alternatively, do it manually by downloading the directory locally.
 Then check Python version via
 ```
 python3 --version
@@ -40,8 +43,10 @@ python3 -m pip install --upgrade pip setuptools
 
 chmod u+x setup.sh
 ./setup.sh
+
+pip install -r requirements.txt
 ```
-   
+
 ## Code Execution
 To run the code, use the command 
 ```
@@ -92,12 +97,11 @@ Then, make sure you have the correct version of TensorBoard installed by running
 ```
 pip uninstall tensorboard
 pip install tensorboard==2.2.0
-pip install tensorboard==2.2.0
 pip install -U tensorboard-plugin-profile==2.2.0
 ```
 Then use the following command to launch TensorBoard:
 ```
-tensorboard --logdir dir/to/log  
+tensorboard --logdir=<dir/to/log>  
 
 >> TensorBoard 2.2.0 at http://localhost:6006/ (Press CTRL+C to quit)
 ```
