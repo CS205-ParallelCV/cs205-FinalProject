@@ -3,8 +3,9 @@ This is a repo for UNet implementation in CS205 final project.
 The primary infrastructure is Google Cloud Platform.
   
   
-First, set up Google Cloud SDK locally so that you can interact with the GC resources.
-The set up documentation can be found on our website.  
+First, set up Google Cloud SDK locally so that you can interact with the GC resources. See this
+[link](https://docs.google.com/document/d/1BjLrbEo8AB3aLRotT7hRbuCKpysrxjO0EOzbqpFLRKA/edit#) for
+how to set up google cloud SDK locally and file transfer between local machine and Compute Engines.
 
 Then instantiate a VM instance of type ```c2-standard-30 (30 vCPUs, 120 GB memory)``` with Ubuntu 18.04.
 
@@ -46,6 +47,8 @@ chmod u+x setup.sh
 
 pip install -r requirements.txt
 ```
+For troubleshooting python dev environment, please follow 
+this guide [official doc](https://cloud.google.com/python/docs/setup#linux).
 
 ## Code Execution
 To run the code, use the command 
