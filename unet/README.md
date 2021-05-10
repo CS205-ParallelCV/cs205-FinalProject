@@ -83,6 +83,8 @@ main.profile%  sort
 main.profile%  sort time
 main.profile%  stats 10
 ```
+The following is an example output.
+![](https://github.com/CS205-ParallelCV/cs205-FinalProject/blob/main/imgs/cProfile_output.jpg)
 
 ### TensorBoard
 We also use TensorBoard to visualize the model-specific profiling.  
@@ -111,4 +113,6 @@ Paste the url in Google Chrome to visualize the execution graphs.
   
 For profile information, select the PROFILE tab in the orange header bar and you can see a detailed
 breakdown of the time spent in different sections. More detailed information can be found in
-the 'Tools' drop-down list at the left.
+the 'Tools' drop-down list at the left. The following is an example output.
+
+![](https://github.com/CS205-ParallelCV/cs205-FinalProject/blob/main/imgs/Tensorboard_output.png)
