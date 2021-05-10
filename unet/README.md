@@ -13,6 +13,7 @@ Then instantiate a VM instance of type ```c2-standard-30 (30 vCPUs, 120 GB memor
 Assume the dataset is saved in Google Cloud Storage bucket ```cs205_final_project```.
 To run the code, first download the data to local machine by the following commands:
 ```
+cd unet (there will be a directory called data inside)
 gsutil -m cp -R gs://cs205_final_project/cell_imgs data/
 gsutil -m cp -R gs://cs205_final_project/mask_imgs data/
 gsutil -m cp -R gs://cs205_final_project/test_imgs data/
@@ -36,8 +37,9 @@ sudo apt update
 sudo apt-get install software-properties-common
 sudo apt-get install python3-pip
 python3 -m pip install --upgrade pip setuptools
-pip install -r requirements.txt
-pip install google-cloud-profiler --ignore-installed
+
+chmod u+x setup.sh
+./setup.sh
 ```
    
 ## Code Execution

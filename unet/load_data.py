@@ -1,4 +1,3 @@
-import os
 import sys
 import warnings
 
@@ -50,5 +49,22 @@ def load_train_test(train_path, mask_path, test_path, width=512, height=512, cha
   return X_train, Y_train, X_test, train_ids, test_ids, sizes_test
 
 
+def load_test(test_path, width=512, height=512, channels=3):
+  test_ids = [str(i) for i in range(65)]
+
+  # Get and resize test images
+  X_test = np.zeros((len(test_ids), height, width, channels), dtype=np.uint8)
+  sizes_test = []
+  print('Getting and resizing test images ... ')
+  sys.stdout.flush()
+  for n, id_ in tqdm(enumerate(test_ids), total=len(test_ids)):
+    img = imread(test_path + 'test_' + id_ + '.png')[:, :, :channels]
+    sizes_test.append([img.shape[0], img.shape[1]])
+    img = resize(img, (height, width), mode='constant', preserve_range=True)
+    X_test[n] = img
+
+  print('Finished loading test data!')
+
+  return X_test, test_ids, sizes_test
 
 # load_train_test("../cell_imgs/", "../mask_imgs/", "../test_imgs/")

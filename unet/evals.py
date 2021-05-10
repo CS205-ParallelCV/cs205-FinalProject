@@ -19,6 +19,7 @@ def mean_iou(y_true, y_pred):
     return K.mean(K.stack(prec), axis=0)
 
 
+
 # # Define IOU metric
 # def iou_metric(y_true_in, y_pred_in, print_table=False):
 #   labels = label(y_true_in > 0.5)

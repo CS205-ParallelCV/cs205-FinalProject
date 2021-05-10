@@ -5,11 +5,6 @@ from keras.layers.convolutional import Conv2D, Conv2DTranspose
 from keras.layers.pooling import MaxPooling2D
 from keras.layers.merge import concatenate
 
-#import tensorflow as tf
-
-#from evals import my_iou_metric
-from evals import mean_iou
-
 
 def build_unet(height, width, channels) -> Model:
   inputs = Input((height, width, channels))
