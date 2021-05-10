@@ -7,6 +7,7 @@ The dataset is in ```data.zip``` file, which has a simplified structure compared
 We implemented and parallelized three models for image segmentation: Boruvka's Algorithm, Otsu's Method and UNet.
 The folders ```boruvka, otsu``` and ```unet``` are the corresponding implementations.
 
-Please visit our website for a detailed description [here](https://cs205-parallelcv.github.io).
+Here are some example outputs or the three methods:
+![method outputs](https://github.com/CS205-ParallelCV/cs205-FinalProject/blob/main/imgs/method_outputs.png)
 
-![method outputs]()
+Please visit our website for a detailed description [here](https://cs205-parallelcv.github.io).
