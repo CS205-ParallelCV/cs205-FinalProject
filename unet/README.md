@@ -143,8 +143,8 @@ pip install tensorflow-gpu
 To use GPU on AWS, we recommend using Deep Learning AMI (Ubuntu 18.04) Version 43.0 as your
 the Amazon Machine Image, since it has most of the machine learning packages installed.  
 
-First download the dataset from our google drive [here](https://drive.google.com/drive/u/0/folders/10bTw_7AQG1CIuzTyz32Zg1xMRe1wrpos).
-Then move the unzipped data folder under this unet folder and install the requirements.
+First move the ```data.zip``` from our repo [here](https://github.com/CS205-ParallelCV/cs205-FinalProject/blob/main/data.zip)
+ under this unet folder. Unzip it and install the package requirements.
 ```bash
 tar -xvf data.zip
 mv data unet/data
@@ -163,3 +163,4 @@ Finally, execute ```main.py``` to train UNet.
 ```
 python3 main.py --root_dir /home/ubuntu/unet --model_name unet_ep5 --epochs 5
 ```
+Similarly, you can run ```main_predict.py``` to use pretrained model to predict on test data.
