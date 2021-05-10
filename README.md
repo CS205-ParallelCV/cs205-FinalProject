@@ -11,3 +11,5 @@ Here are some example outputs or the three methods:
 ![method outputs](https://github.com/CS205-ParallelCV/cs205-FinalProject/blob/main/imgs/method_outputs.png)
 
 Please visit our website for a detailed description [here](https://cs205-parallelcv.github.io).
+
+
