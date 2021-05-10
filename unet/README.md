@@ -61,6 +61,17 @@ For example,
 ```
 python3 main.py --root_dir /home/user/unet --model_name unet_ep5  --epochs 5
 ```
+If you want to perform prediction on the test data with a pretrained model, use the following command
+```bash
+python3 main.py --root_dir /home/user/unet --weights_fp --test_dir /path/to/test_data --test_size [N] /path/to/your_weights.h5
+```
+Flag descriptions:
+- root_dir: the unet directory 
+- test_dir: directory to the test data  
+- test_size: Number of images in test data folder  
+- weights_fp: file path to the .h5 weights file
+
+
 ## Code Profiling
 We use cProfile and TensorBoard for code profiling. 
 
@@ -117,17 +128,38 @@ the 'Tools' drop-down list at the left. The following is an example output.
 
 ![](https://github.com/CS205-ParallelCV/cs205-FinalProject/blob/main/imgs/Tensorboard_output.png)
 
-## Execute with GPU
+## Execute with GPU on Google Cloud
 To use the GPU for the compute engine instance on GCP, first make sure you have enough GPU quota in 
-your account. Then follow the official guide to ![attach](https://cloud.google.com/compute/docs/gpus/add-remove-gpus) 
-and ![install Cuda dependencies](https://www.tensorflow.org/install/gpu).  
+your account. Then follow the official guide to [attach](https://cloud.google.com/compute/docs/gpus/add-remove-gpus) 
+and [install Cuda dependencies](https://www.tensorflow.org/install/gpu).  
 After setup, make sure you ```nvndia-smi``` command works in the terminal.
-
-To use GPU on AWS, we recommend using Deep Learning AMI (Ubuntu 18.04) Version 43.0 as your
-the Amazon Machine Image, since it has most of the machine learning packages installed. 
 
 Then, install tensorflow-gpu by 
 ```bash
 pip install tensorflow-gpu
 ```
-To execute the code, use the commands described above.
+
+## Execute with GPU on AWS
+To use GPU on AWS, we recommend using Deep Learning AMI (Ubuntu 18.04) Version 43.0 as your
+the Amazon Machine Image, since it has most of the machine learning packages installed.  
+
+First download the dataset from our google drive [here](https://drive.google.com/drive/u/0/folders/10bTw_7AQG1CIuzTyz32Zg1xMRe1wrpos).
+Then move the unzipped data folder under this unet folder and install the requirements.
+```bash
+tar -xvf data.zip
+mv data unet/data
+cd unet
+pip3 install -r requirements.txt
+pip3 install tensorflow-gpu
+```
+Make sure that when you finish setup, tensorflow is able to locate the GPU by running the following check.
+```
+python3
+>>> import tensorflow as tf
+>>> print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+>>> Num GPUs Available: 1
+```
+Finally, execute ```main.py``` to train UNet. 
+```
+python3 main.py --root_dir /home/ubuntu/unet --model_name unet_ep5 --epochs 5
+```
