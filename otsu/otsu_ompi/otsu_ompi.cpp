@@ -137,7 +137,7 @@ int main(int argc, char **argv)
         /********** final segmentation *************/
         /*******************************************/
 
-        imwrite("otsu_openmp_out/" + std::to_string(cur_img) + "out.png",img);
+        imwrite("otsu_ompi_out/" + std::to_string(cur_img) + "out.png",img);
     }
 
     return 0;
